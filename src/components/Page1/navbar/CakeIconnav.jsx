@@ -7,7 +7,7 @@ const CakeIconnav = () => {
     <div
       className="py-5 ml-10 w-auto flex items-center justify-start "
     >
-      <Cake size={50} />
+      <Cake size={50} color = "red"/>
       <NavContent />
     </div>
   );

@@ -1,1 +1,40 @@
 @import "tailwindcss";
+@font-face {
+  font-family: "Anton";
+  src: url("./assets/fonts/AntonSC-Regular.ttf");
+}
+@font-face { 
+  font-family: "SpaceGroteskLight";
+  src: url("./assets/fonts/SpaceGrotesk-Light.ttf");
+  
+}
+@font-face { 
+  font-family: "SpaceGroteskRegular";
+  src: url("./assets/fonts/SpaceGrotesk-Regular.ttf");
+  
+}
+@font-face { 
+  font-family: "SpaceGroteskBold";
+  src: url("./assets/fonts/SpaceGrotesk-Bold.ttf");
+  
+  
+}
+
+@font-face { 
+  font-family: "SpaceGroteskMedium";
+  src: url("./assets/fonts/SpaceGrotesk-Medium.ttf");
+  
+}
+@font-face { 
+  font-family: "SpaceGroteskSemiBold";
+  src: url("./assets/fonts/SpaceGrotesk-SemiBold.ttf");
+}  
+
+@theme {
+  --font-anton: "Anton", sans-serif;
+  --font-space-reg : "SpaceGroteskRegular", sans-serif;
+  --font-space-light : "SpaceGroteskLight", sans-serif;
+  --font-space-bold : "SpaceGroteskBold", sans-serif;
+  --font-space-medium : "SpaceGroteskMedium", sans-serif;
+  --font-space-semi-bold : "SpaceGroteskSemiBold", sans-serif;
+} 

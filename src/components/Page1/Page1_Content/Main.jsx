@@ -4,7 +4,7 @@ import Right_side from './Right_side'
 
 const Main = () => {
   return (
-    <div className='h-full w-full flex '>
+    <div className='flex items-center justify-between px-10 h-[calc(100vh-80px)] w-full'>
         <Left_side />
         <Right_side />
     </div>

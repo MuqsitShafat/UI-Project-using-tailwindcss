@@ -32,7 +32,7 @@ const Right_side = () => {
   }, [currentIndex]);
 
  return (
-  <div className="h-full w-[50%] rounded-full overflow-hidden flex justify-center mt-5"> 
+  <div className="h-150  w-150 absolute right-10 bottom-4 rounded-full overflow-hidden flex justify-center mt-5"> 
     <div
       className="flex h-full w-full rounded-full shadow-lg "
       style={{
