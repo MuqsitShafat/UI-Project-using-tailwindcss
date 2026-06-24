@@ -32,7 +32,9 @@ const Right_side = () => {
   }, [currentIndex]);
 
  return (
-  <div className="h-150  w-150 absolute right-10 bottom-4 rounded-full overflow-hidden flex justify-center mt-5"> 
+    <div className="h-full w-[48%] flex justify-center items-center  bg-pink-100 rounded-tl-[80%] rounded-tr-[20%] rounded-br-[60%] rounded-bl-[40%]"  >
+    <div className="h-full w-full flex justify-center items-center bg-[#abcc99c9] rounded-tl-[30%] rounded-br-[30%] rounded-tr-[100%]  rounded-bl-[80%] shadow-2xl"  >
+    <div className="h-140  w-140 absolute right-10 bottom-4 rounded-full overflow-hidden flex justify-center mt-10 mr-15 shadow-lg"> 
     <div
       className="flex h-full w-full rounded-full shadow-lg "
       style={{
@@ -53,6 +55,8 @@ const Right_side = () => {
         </div>
       ))}
     </div>
+  </div>
+  </div>
   </div>
 );
 };
