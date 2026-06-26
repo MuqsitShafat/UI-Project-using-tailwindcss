@@ -3,6 +3,14 @@
   font-family: "Anton";
   src: url("./assets/fonts/AntonSC-Regular.ttf");
 }
+@font-face {
+  font-family: "HookRide";
+  src: url("./assets/fonts/HOOKRIDE.ttf");
+}
+@font-face {
+  font-family: "Briqusion";
+  src: url("./assets/fonts/Briqusion.otf");
+}
 @font-face { 
   font-family: "SpaceGroteskLight";
   src: url("./assets/fonts/SpaceGrotesk-Light.ttf");
@@ -32,6 +40,8 @@
 
 @theme {
   --font-anton: "Anton", sans-serif;
+  --font-hook : "HookRide", sans-serif;
+  --font-briqusion : "Briqusion", sans-serif;
   --font-space-reg : "SpaceGroteskRegular", sans-serif;
   --font-space-light : "SpaceGroteskLight", sans-serif;
   --font-space-bold : "SpaceGroteskBold", sans-serif;
