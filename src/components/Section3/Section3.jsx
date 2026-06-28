@@ -1,10 +1,14 @@
 import React from 'react'
 import DailyDough from './DailyDough'
+import PersonBaking from './PersonBaking'
+import Workingbox from './Workingbox'
 
 const Section3 = () => {
   return (
-    <div className='bg-[#dfc198] mt-25 flex flex-col p-5'>
+    <div className='mt-25 flex flex-col '>
         <DailyDough />
+        <PersonBaking />
+        <Workingbox />
     </div>
   )
 }
