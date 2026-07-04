@@ -37,7 +37,14 @@
   font-family: "SpaceGroteskSemiBold";
   src: url("./assets/fonts/SpaceGrotesk-SemiBold.ttf");
 }  
-
+@font-face { 
+  font-family: "ChunkBold";
+  src: url("./assets/fonts/ChunkoBold.ttf");
+}  
+@font-face { 
+  font-family: "FrauncesBold";
+  src: url("./assets/fonts/FrauncesBold.ttf");
+}  
 @theme {
   --font-anton: "Anton", sans-serif;
   --font-hook : "HookRide", sans-serif;
@@ -47,4 +54,6 @@
   --font-space-bold : "SpaceGroteskBold", sans-serif;
   --font-space-medium : "SpaceGroteskMedium", sans-serif;
   --font-space-semi-bold : "SpaceGroteskSemiBold", sans-serif;
+  --font-chunk-bold : "ChunkBold", sans-serif;
+  --font-fraunces-bold : "FrauncesBold", sans-serif;
 } 
