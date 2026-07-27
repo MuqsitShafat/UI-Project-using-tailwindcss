@@ -4,8 +4,19 @@ import Section2 from './components/Section2/Section2'
 import Section3 from './components/Section3/Section3'
 import Section4 from './components/Section4/Section4'
 import Footer from './components/Footer/Footer'
-
+import Lenis from 'lenis'
 const App = () => {
+  const lenis = new Lenis({
+    duration: 1.3,
+  });
+
+  // Use requestAnimationFrame to continuously update the scroll
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
   return (
     <div className='min-h-screen w-full bg-red-200'>
       <Section1 />
