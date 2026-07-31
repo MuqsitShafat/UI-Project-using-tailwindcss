@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import CarouselImages from "./CarouselImages";
+import SpotlightVeil from "./SpotlightVeil";
+
 const Right_side = () => {
   const slides = [...CarouselImages, CarouselImages[0]];
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,7 +21,7 @@ const Right_side = () => {
     return () => clearInterval(intervalRef.current);
   }, []);
 
-   useEffect(() => {
+  useEffect(() => {
     if (currentIndex === slides.length - 1) {
       // Wait for the CSS transition to finish (match your duration)
       const timeout = setTimeout(() => {
@@ -31,34 +33,33 @@ const Right_side = () => {
     }
   }, [currentIndex]);
 
- return (
-    <div className="h-full w-[48%] flex justify-center items-center  bg-pink-100 rounded-tl-[80%] rounded-tr-[20%] rounded-br-[60%] rounded-bl-[40%]"  >
-    <div className="h-full w-full flex justify-center items-center bg-[#abcc99c9] rounded-tl-[30%] rounded-br-[30%] rounded-tr-[100%]  rounded-bl-[80%] shadow-2xl"  >
-    <div className="h-140  w-140 absolute right-10 bottom-4 rounded-full overflow-hidden flex justify-center mt-10 mr-15 shadow-lg"> 
-    <div
-      className="flex h-full w-full rounded-full shadow-lg "
-      style={{
-        transform: `translateX(-${currentIndex * 100}%)`,
-        transition: isTransitioning ? "transform 700ms ease-in-out" : "none",
-      }}
-    >
-      {slides.map((image, index) => (
-        <div
-          key={index}
-          className="min-w-full h-full" 
-        >
-          <img
-            src={image.src}
-            alt={image.alt}
-            className="w-full h-full object-cover "
-          />
+  return (
+    <div className="h-full w-[48%] flex justify-center items-center  bg-pink-100 rounded-tl-[80%] rounded-tr-[20%] rounded-br-[60%] rounded-bl-[40%]">
+      <div className="h-full w-full flex justify-center items-center bg-[#abcc99c9] rounded-tl-[30%] rounded-br-[30%] rounded-tr-[100%]  rounded-bl-[80%] shadow-2xl">
+        <div className="h-140  w-140 absolute right-10 bottom-4 rounded-full overflow-hidden flex justify-center mt-10 mr-15 shadow-lg">
+          <SpotlightVeil rounded="9999px" size={200} visibility={25} veilColor="#171313">
+            <div
+              className="flex h-full w-full rounded-full shadow-lg "
+              style={{
+                transform: `translateX(-${currentIndex * 100}%)`,
+                transition: isTransitioning ? "transform 700ms ease-in-out" : "none",
+              }}
+            >
+              {slides.map((image, index) => (
+                <div key={index} className="min-w-full h-full">
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover "
+                  />
+                </div>
+              ))}
+            </div>
+          </SpotlightVeil>
         </div>
-      ))}
+      </div>
     </div>
-  </div>
-  </div>
-  </div>
-);
+  );
 };
 
 export default Right_side;

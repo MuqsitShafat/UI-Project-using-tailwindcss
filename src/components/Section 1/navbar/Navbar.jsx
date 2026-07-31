@@ -12,13 +12,21 @@ const Navbar = () => {
 
   useGSAP(() => {
     // gsap code here...
-    gsap.from('.navbar', { 
-      y:-100,
-      duration: 1,
-      opacity: 0,
-      delay: 0.2
-     }); 
-  });  
+  gsap.set('.navbar', {
+  perspective: 1000,
+  transformStyle: 'preserve-3d',
+});
+
+gsap.from('.navbar', {
+  rotationX: 180,
+  y: -50,
+  autoAlpha: 10,
+  duration: 1.2,
+  delay: 0.2,
+  force3D: true,
+  ease: 'power1.out',
+});
+  });
   return (
     <div ref={nav} className="navbar px-15 py-14 h-20 w-full bg-red-300 flex items-center justify-between shadow-md">
       <CakeIconnav />
