@@ -59,9 +59,9 @@ export default function SpotlightVeil({
   mode = "followCursor", // "followCursor" | "onImage"
   restX = 50,
   restY = 50,
-  veilColor = "#171313",
-  size = 380,
-  visibility = 20,
+  veilColor = "white",
+  size = 1500,
+  visibility = 80,
   rounded = "9999px",
   transition = DEFAULT_TRANSITION,
   style,

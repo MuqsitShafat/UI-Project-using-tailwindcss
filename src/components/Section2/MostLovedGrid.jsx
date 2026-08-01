@@ -1,5 +1,7 @@
 import React from 'react'
-
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+gsap.registerPlugin(useGSAP);
 const mostloved = [
   {
     id: 1,
@@ -33,10 +35,39 @@ const mostloved = [
   }
 ];
 const MostLovedGrid = () => {
+  const containerRef = React.useRef();
+
+  useGSAP(() => {
+   
+    const items = containerRef.current.querySelectorAll(".most-loved-item");
+    const handlers = [];
+
+    items.forEach((item) => {
+      const handleMouseEnter = () => {
+        gsap.to(item, { scale: 1.1, duration: 0.5, ease: "back" });
+      };
+      const handleMouseLeave = () => {
+        gsap.to(item, { scale: 1, duration: 0.5, ease: "back" });
+      };
+
+      item.addEventListener("mouseenter", handleMouseEnter);
+      item.addEventListener("mouseleave", handleMouseLeave);
+
+      handlers.push({ item, handleMouseEnter, handleMouseLeave });
+    });
+
+    return () => {
+      handlers.forEach(({ item, handleMouseEnter, handleMouseLeave }) => {
+        item.removeEventListener("mouseenter", handleMouseEnter);
+        item.removeEventListener("mouseleave", handleMouseLeave);
+      });
+    };
+  }, []);
+
   return (
-    <div className='grid grid-cols-5 mt-10 gap-4 px-4'>
+    <div ref={containerRef} className='grid grid-cols-5 mt-10 gap-4 px-4'>
       {mostloved.map((item) => (
-        <div className='flex flex-col items-center' key={item.id}>
+        <div  className='most-loved-item flex flex-col items-center' key={item.id}>
           <div>
             <img src={item.img} className='h-50 w-50 drop-shadow-lg rounded-lg object-cover' />
           </div>

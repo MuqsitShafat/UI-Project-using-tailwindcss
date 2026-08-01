@@ -8,8 +8,8 @@ const Left_side = () => {
   const containerRef = useRef();
   const revealRef = useRef(); // the black-text layer with the circle mask
   const splitTextRef = useRef();
+  const headingRef = useRef(); // 👈 new ref for the whole h1
   useGSAP(() => {
-
     const splitTextEl = splitTextRef.current;
     const splitTextContent = splitTextEl.textContent;
     const splitChars = splitTextContent.split("");
@@ -20,15 +20,30 @@ const Left_side = () => {
       else letters += `<span class="b">${char}</span>`;
     });
 
-    splitTextEl.innerHTML = letters; // ✅ writing into the real element now
-    
-    gsap.to(".a", {
-      rotate: -180,
-      ease: "none",
-      duration: 0.5,
-      delay : 3
-    });
+    splitTextEl.innerHTML = letters;
 
+    // grab the .a element right after it's created
+    const aEl = splitTextEl.querySelector(".a");
+
+    const handleRotatingTextonMouseEnter = () => {
+      gsap.to(aEl, {
+        rotate: -180,
+        ease: "sine",
+        duration: 0.3,
+      });
+    };
+    const handleRotatingTextonMouseLeave = () => {
+      gsap.to(aEl, {
+        rotate: 0,
+        ease: "sine",
+        duration: 0.3,
+      });
+    };
+
+    // 👇 bind to the whole heading, not aEl — hover anywhere on the h1 triggers it
+    const headingEl = headingRef.current;
+    headingEl.addEventListener("mouseenter", handleRotatingTextonMouseEnter);
+    headingEl.addEventListener("mouseleave", handleRotatingTextonMouseLeave);
     // quickTo = smooth, interruptible tweens for fast-updating values like mouse position
     const xTo = gsap.quickTo(revealRef.current, "--x", {
       duration: 0.3,
@@ -49,7 +64,7 @@ const Left_side = () => {
     const handleMouseEnter = () => {
       gsap.to(revealRef.current, {
         "--r": "50px",
-        duration: 0.4,
+        duration: 0.1,
         ease: "power2.out",
         backgroundColor: "#1614116c",
         color: "#f4f4f4",
@@ -74,13 +89,17 @@ const Left_side = () => {
       el.removeEventListener("mousemove", handleMouseMove);
       el.removeEventListener("mouseenter", handleMouseEnter);
       el.removeEventListener("mouseleave", handleMouseLeave);
+      aEl.removeEventListener("mouseenter", handleRotatingTextonMouseEnter);
+      aEl.removeEventListener("mouseleave", handleRotatingTextonMouseLeave);
+      headingEl.removeEventListener("mouseenter", handleRotatingTextonMouseEnter);
+      headingEl.removeEventListener("mouseleave", handleRotatingTextonMouseLeave);
     };
   }, []);
 
   return (
     <div className="ml-10 h-full w-[45%] flex justify-center items-center">
       <div>
-        <h1 className="text-7xl font-anton text-black">
+        <h1 ref={headingRef} className="text-7xl font-anton text-black">
           WELCOME TO <br />
           <span ref={splitTextRef} className="text-red-600">ADAN</span> BAKERY
         </h1>
