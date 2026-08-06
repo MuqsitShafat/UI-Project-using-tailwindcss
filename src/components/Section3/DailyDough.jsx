@@ -1,6 +1,79 @@
 import React from 'react'
-
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+gsap.registerPlugin(useGSAP);
 const DailyDough = () => {
+  const boxRef = React.useRef(null);
+  const signupRef = React.useRef(null);
+  const imageBoxRef = React.useRef(null);
+  useGSAP(() => {
+    gsap.from(boxRef.current, {
+      x: -100,
+      opacity: 0,
+      duration: 1
+    })
+    gsap.from(signupRef.current, {
+      x: 200,
+      opacity: 0,
+      duration: 1
+    })
+    const boxmouseEnter = () => {
+      gsap.to(boxRef.current, {
+        scale: 1.05,
+        duration: 0.3
+      })
+    }
+    const boxmouseLeave = () => {
+      gsap.to(boxRef.current, {
+        scale: 1,
+        duration: 0.3
+      })
+    }
+    const signupmouseEnter = () => {
+      gsap.to(signupRef.current, {
+        scale: 1.04,
+        duration: 0.3
+      })
+    }
+    const signupmouseLeave = () => {
+      gsap.to(signupRef.current, {
+        scale: 1,
+        duration: 0.3
+      })
+    }
+    const imageBoxmouseEnter = () => {
+      gsap.to(imageBoxRef.current, {
+        rotate: 10,
+        scale: 1.15,
+        duration: 0.3
+      })
+    }
+    const imageBoxmouseLeave = () => {
+      gsap.to(imageBoxRef.current, {
+        rotate: 0,
+        scale: 1,
+        duration: 0.3
+      })
+    }
+
+    imageBoxRef.current.addEventListener('mouseenter', imageBoxmouseEnter);
+    imageBoxRef.current.addEventListener('mouseleave', imageBoxmouseLeave);
+    boxRef.current.addEventListener('mouseenter', boxmouseEnter);
+    boxRef.current.addEventListener('mouseleave', boxmouseLeave);
+    signupRef.current.addEventListener('mouseenter', signupmouseEnter);
+    signupRef.current.addEventListener('mouseleave', signupmouseLeave);
+
+    return () => {
+      boxRef.current.removeEventListener('mouseenter', boxmouseEnter);
+      boxRef.current.removeEventListener('mouseleave', boxmouseLeave);
+      signupRef.current.removeEventListener('mouseenter', signupmouseEnter);
+      signupRef.current.removeEventListener('mouseleave', signupmouseLeave);
+      imageBoxRef.current.removeEventListener('mouseenter', imageBoxmouseEnter);
+      imageBoxRef.current.removeEventListener('mouseleave', imageBoxmouseLeave);
+    }
+
+
+  }, []);
   return (
     <div className='bg-[#dfc198] px-10 py-2 rounded-lg'>
 
@@ -9,11 +82,11 @@ const DailyDough = () => {
 
         {/* Left Text */}
         <div className='ml-10'>
-          <h1 className='leading-none font-briqusion drop-shadow-lg text-[170px] text-amber-950'>
+          <h1 className='leading-none font-briqusion drop-shadow-lg text-[170px] text-amber-950 select-none'>
             Daily Dough
           </h1>
 
-          <div className='bg-[#daae8275] p-5 mt-5 shadow-lg rounded-bl-[10%] rounded-tl-[5%]'
+          <div ref={boxRef} className='bg-[#daae8275] p-5 mt-5 shadow-lg rounded-bl-[10%] rounded-tl-[5%]'
             style={{
               clipPath: "polygon(0% 0%, 90% 0%, 100% 100%, -10% 110%)"
             }}>
@@ -27,6 +100,7 @@ const DailyDough = () => {
         <div className='shrink-0'>
           <div className='bg-[#8716165b] rounded-tl-[20%] rounded-tr-[50%] rounded-bl-[50%] rounded-br-[20%] shadow-lg'>
             <img
+              ref={imageBoxRef}
               src='src/assets/images/Daily_Dough_image.png'
               className='drop-shadow-lg h-100 w-100 object-cover'
             />
@@ -44,7 +118,7 @@ const DailyDough = () => {
         </p>
 
         {/* Email Box */}
-        <div className='flex items-center bg-[#f5efe9] border border-amber-900 rounded-full w-105 h-14 overflow-hidden shadow-sm'>
+        <div ref={signupRef} className='flex items-center bg-[#f5efe9] border border-amber-900 rounded-full w-105 h-14 overflow-hidden shadow-sm'>
 
           <input
             type='email'
