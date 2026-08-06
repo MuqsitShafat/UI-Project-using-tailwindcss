@@ -69,7 +69,7 @@ const MostLovedGrid = () => {
       {mostloved.map((item) => (
         <div  className='most-loved-item flex flex-col items-center' key={item.id}>
           <div>
-            <img src={item.img} className='h-50 w-50 drop-shadow-lg rounded-lg object-cover' />
+            <img src={item.img} className='h-50 w-50 drop-shadow-lg rounded-lg object-cover cursor-pointer' />
           </div>
           <div className='flex flex-col mt-4 bg-[#dfc198] px-3 w-fit shadow-lg'
             style={{ clipPath: "polygon(4% -6%, 29% -8%, 56% 0%, 28% 21%, 56% -2%, 73% 8%, 85% 0%, 95% 9%, 100% 25%, 89% 54%, 100% 85%, 90% 89%, 80% 80%, 65% 95%, 55% 90%, 40% 100%, 25% 90%, 10% 95%, 2% 107%, 3% 46%, -1% -2%, 5% 0%)" }}>
